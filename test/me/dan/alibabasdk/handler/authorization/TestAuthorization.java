@@ -42,7 +42,7 @@ public class TestAuthorization {
 
 	@Test
 	public void testRefreshTokenExecutor() throws Exception {
-		String clientId = "******";
+		String clientId = "*****";
 		String clientSecret = "******";
 		String refreshToken = "41227eb4-520e-48e0-a432-7d17c870bf6c";
 		RefreshTokenExecutor executor = new RefreshTokenExecutor(clientId, clientSecret, refreshToken);

@@ -27,7 +27,7 @@ public class TestOrder {
 	public void testOrderListOnSellerViewExecutor() throws Exception {
 
 		AuthorizationToken token = new AuthorizationToken();
-		token.setAccess_token("8f4b8fd6-d71b-4a25-8cc3-2ea3a4333f46");
+		token.setAccess_token("28ad70a3-9ceb-46c6-9976-0af41c5f2b21");
 		token.setAliId(123456789l);
 		token.setMemberId("******");
 		token.setClientId("******");
@@ -56,9 +56,9 @@ public class TestOrder {
 	public void testOrderOnSellerViewExecutor() throws Exception {
 
 		AuthorizationToken token = new AuthorizationToken();
-		token.setAccess_token("8f4b8fd6-d71b-4a25-8cc3-2ea3a4333f46");
-		token.setAliId(1234546789l);
-		token.setMemberId("*******");
+		token.setAccess_token("28ad70a3-9ceb-46c6-9976-0af41c5f2b21");
+		token.setAliId(123456789l);
+		token.setMemberId("******");
 		token.setClientId("******");
 		token.setClientSecret("******");
 		token.setExpires_in(35999);

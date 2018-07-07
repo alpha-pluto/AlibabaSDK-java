@@ -117,9 +117,9 @@ public class ApiHandlerWrapper<T extends GenericAPIPlot> implements MethodInterc
 			token = repository.getAccessToken(key);
 		}
 		/*
-		 * for (Map.Entry<String, Object> entity :
+		 * for (Map.Entry<String, Object> entry :
 		 * repository.getCacheAuthTokenRepo().entrySet()) {
-		 * System.out.println(entity.getKey() + " => " + entity.getValue());
+		 * System.out.println(entry.getKey() + " => " + entry.getValue());
 		 * }
 		 */
 		return token;

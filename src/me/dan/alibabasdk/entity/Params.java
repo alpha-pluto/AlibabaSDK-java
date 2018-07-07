@@ -15,21 +15,18 @@ import java.lang.reflect.Type;
  */
 @SuppressWarnings("serial")
 public abstract class Params<TResponse> implements Serializable {
-	
+
 	/**
 	 * @Fields serialVersionUID : TODO
 	 * 
 	 */
 	private static final long serialVersionUID = -3015386325466104382L;
 
-	@SuppressWarnings({ "unused", "unchecked", "rawtypes" })
+	@SuppressWarnings("unchecked")
 	public Class<TResponse> getResponseClass() {
-		Type type = this.getClass().getGenericSuperclass();
-
+		// Type type = this.getClass().getGenericSuperclass();
 		ParameterizedType parameterizedType = (ParameterizedType) this.getClass().getGenericSuperclass();
-		return (Class) parameterizedType.getActualTypeArguments()[0];
+		return (Class<TResponse>) (parameterizedType.getActualTypeArguments()[0]);
 	}
-	
+
 }
-
-

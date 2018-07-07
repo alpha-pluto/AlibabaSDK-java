@@ -1,8 +1,5 @@
 package me.dan.alibabasdk.entity;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-
 /**
  * @Title: ResponseEntityBase.java
  * @Package me.dan.alibabasdk.entity
@@ -32,9 +29,13 @@ public abstract class ResponseEntityBase<T> {
 
 	private String signature;
 
+	/*
+	 * 此函数有bug不能返回值
+	 */
 	public Class<T> getResponseClass() {
-		// return GenericUtils.getSuperClassGenricType(this.getClass(), 0);
-		Type persistentClass = ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+		// ParameterizedType parameterizedType = (ParameterizedType)
+		// this.getClass().getGenericSuperclass();
+		// Type responstType = (parameterizedType.getActualTypeArguments()[0]);
 		return null;
 	}
 

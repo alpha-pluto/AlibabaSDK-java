@@ -61,8 +61,8 @@ public abstract class AbstractClient {
 
 	public <T> ResponseEntity<T> request(GenericAPIPlot apiPlot, Collection<Serializer> serializers,
 			Collection<DeSerializer> deSerializers) throws IOException, AliSDKException {
-		Protocol protocol = apiPlot.getRequestPolicy().getRequestProtocol();
-		Serializer serializer = serializerProvider.getSerializer(protocol.name());
+		// Protocol protocol = apiPlot.getRequestPolicy().getRequestProtocol();
+		// Serializer serializer = serializerProvider.getSerializer(protocol.name());
 		ResponseEntity<T> response = new ResponseEntity<T>();
 
 		HttpHelper.forceOceanDateFormat(apiPlot.getRequestPolicy(), apiPlot.getParams());
@@ -74,11 +74,12 @@ public abstract class AbstractClient {
 		if (HttpMethod.GET.equals(apiPlot.getRequestPolicy().getHttpMethod())) {
 			URL getURL = HttpHelper.buildRequestUrl(apiPlot, apiPlot.getParams());
 			response = this.doGet(getURL, apiPlot.getParams(), apiPlot, deSerializers);
+			response.setSignature(HttpHelper.getSignature(apiPlot.getParams()));
 			return response;
 		} else {
 			URL postURL = HttpHelper.buildRequestUrl(apiPlot, apiPlot.getParams());
-			for (Map.Entry<String, Object> entity : apiPlot.getParams().entrySet()) {
-				Object inputValue = entity.getValue();
+			for (Map.Entry<String, Object> entry : apiPlot.getParams().entrySet()) {
+				Object inputValue = entry.getValue();
 				// System.out.println(entry.getKey() + "===>" + inputValue);
 				if (inputValue.getClass().isAssignableFrom(byte[].class)
 						|| inputValue.getClass().isAssignableFrom(Byte[].class)) {
@@ -86,6 +87,7 @@ public abstract class AbstractClient {
 				}
 			}
 			response = this.doPost(postURL, apiPlot.getParams(), apiPlot, deSerializers);
+			response.setSignature(HttpHelper.getSignature(apiPlot.getParams()));
 			return response;
 		}
 	}

@@ -84,7 +84,7 @@ public class DefaultHttpResponseBuilder implements HttpResponseBuilder {
 				response.setResult((T) result);
 				ResponseStatus responseStatus = new ResponseStatus();
 				responseStatus.setCode(String.valueOf(httpCode));
-				responseStatus.setMessage("");
+				responseStatus.setMessage("status : " + response.getStatusCode());
 				response.setResponseStatus(responseStatus);
 			} else {
 

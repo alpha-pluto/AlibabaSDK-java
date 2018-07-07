@@ -102,6 +102,10 @@ public final class HttpHelper {
 
 	}
 
+	public static String getSignature(Map<String, Object> params) {
+		return (String) params.get(PARAM_NAME_SIGNATURE);
+	}
+
 	public static void attachAccessToken(RequestPolicy requestPolicy, Map<String, Object> params)
 			throws AliSDKException {
 		String accessToken = requestPolicy.getAccessTokenOrPreAuthCode();
