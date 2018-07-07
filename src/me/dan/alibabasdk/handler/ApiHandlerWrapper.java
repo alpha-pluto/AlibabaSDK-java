@@ -28,7 +28,7 @@ public class ApiHandlerWrapper<T extends GenericAPIPlot> implements MethodInterc
 
 	private String destMethodName;
 
-	private Object target;
+	private T target;
 
 	private boolean retry = false;
 
@@ -44,7 +44,7 @@ public class ApiHandlerWrapper<T extends GenericAPIPlot> implements MethodInterc
 	 * @throws
 	 * 
 	 */
-	public Object getInstance(Object target, String destinationMethod, boolean retryIfFail) {
+	public Object getInstance(T target, String destinationMethod, boolean retryIfFail) {
 		this.target = target;
 		this.retry = retryIfFail;
 		this.destMethodName = destinationMethod;
@@ -67,7 +67,7 @@ public class ApiHandlerWrapper<T extends GenericAPIPlot> implements MethodInterc
 			try {
 				result = proxy.invokeSuper(obj, args);
 				if (result.getClass().equals(ResponseEntity.class)) {
-					int statusCode = ((ResponseEntity) result).getStatusCode();
+					int statusCode = ((ResponseEntity<?>) result).getStatusCode();
 					if (!(statusCode >= 200 && statusCode <= 299) && retry) {
 						AuthorizationToken newToken = doRefreshAccessToken();
 						doChangeAccessToken(newToken, args);
@@ -128,7 +128,7 @@ public class ApiHandlerWrapper<T extends GenericAPIPlot> implements MethodInterc
 	private void storeAuthorizationToken(String key, AuthorizationToken token) {
 
 		AuthorizationTokenRepository repository = getAuthorizationRepository();
-		if (null == repository) {
+		if (null != repository) {
 			repository.storeAccessToken(key, token);
 		}
 	}

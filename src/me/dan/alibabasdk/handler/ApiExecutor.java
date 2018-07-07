@@ -1,6 +1,5 @@
 package me.dan.alibabasdk.handler;
 
-import me.dan.alibabasdk.entity.Params;
 import me.dan.alibabasdk.entity.ResponseEntity;
 import me.dan.alibabasdk.entity.client.AuthorizationToken;
 import me.dan.alibabasdk.infrastructure.GenericAPIPlot;
@@ -14,7 +13,7 @@ import me.dan.alibabasdk.infrastructure.GenericAPIPlot;
  * @date 2018-07-06 下午9:15:26
  * @version 0.0.1
  */
-public abstract class ApiExecutor<PlotType, R extends ResponseEntity<T>, ParamType, T> {
+public abstract class ApiExecutor<PlotType extends GenericAPIPlot, R extends ResponseEntity<T>, ParamType, T> {
 
 	protected ResponseEntity<T> responseEntity;
 
@@ -27,7 +26,7 @@ public abstract class ApiExecutor<PlotType, R extends ResponseEntity<T>, ParamTy
 	/*
 	 * 处理重试的句柄
 	 */
-	protected ApiHandlerWrapper apiHandler;
+	protected ApiHandlerWrapper<PlotType> apiHandler;
 
 	/*
 	 * 指示是否在出错后重试一次

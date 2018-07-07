@@ -31,7 +31,7 @@ public class TestOrder {
 		token.setAliId(123456789l);
 		token.setMemberId("******");
 		token.setClientId("******");
-		token.setClientSecret("*");
+		token.setClientSecret("******");
 		token.setExpires_in(35999);
 		token.setRefresh_token("41227eb4-520e-48e0-a432-7d17c870bf6c");
 		token.setRefresh_token_timeout("20181113172954000+0800");
@@ -59,8 +59,8 @@ public class TestOrder {
 		token.setAccess_token("8f4b8fd6-d71b-4a25-8cc3-2ea3a4333f46");
 		token.setAliId(1234546789l);
 		token.setMemberId("*******");
-		token.setClientId("*******");
-		token.setClientSecret("*******");
+		token.setClientId("******");
+		token.setClientSecret("******");
 		token.setExpires_in(35999);
 		token.setRefresh_token("41227eb4-520e-48e0-a432-7d17c870bf6c");
 		token.setRefresh_token_timeout("20181113172954000+0800");
