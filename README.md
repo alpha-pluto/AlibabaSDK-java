@@ -4,12 +4,13 @@
 
 获取授权链接
 
+
   @Test
-	public void testGetPreAuthUrl() throws Exception {
-		PreAuthAPIPlot plot = new PreAuthAPIPlot("******", "1688", "http://www.eastmall.vip/ali-pre-auth", "******");
-		String url = plot.getAuthorizationUrl();
-		System.out.println(url);
-	}
+  public void testGetPreAuthUrl() throws Exception {
+  	PreAuthAPIPlot plot = new PreAuthAPIPlot("******", "1688", "http://www.eastmall.vip/ali-pre-auth", "******");
+	String url = plot.getAuthorizationUrl();
+	System.out.println(url);
+  }
 
 用授权码换取令牌
 
