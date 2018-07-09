@@ -120,6 +120,22 @@
 	}
 	
 	
+令牌刷新后续处理句柄
+
+	/*
+	 * 句柄 模拟器
+	 * 
+	 */
+	public class HandlerSimulator {
+	
+		/*
+		 * 
+		 */
+		public void notifyOfHandlerPurpose(Object object) {
+			System.out.println("notifyOfHandlerPurpose:" + object.toString());
+		}
+	}
+	
 演示令牌刷新后续处理句柄
 
 	@Test
