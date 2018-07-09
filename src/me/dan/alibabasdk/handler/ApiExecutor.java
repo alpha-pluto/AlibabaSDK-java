@@ -1,8 +1,13 @@
 package me.dan.alibabasdk.handler;
 
+import static org.hamcrest.CoreMatchers.anything;
+
+import java.lang.reflect.Method;
+
 import me.dan.alibabasdk.entity.ResponseEntity;
 import me.dan.alibabasdk.entity.client.AuthorizationToken;
 import me.dan.alibabasdk.infrastructure.GenericAPIPlot;
+import me.dan.alibabasdk.util.GenericUtils;
 
 /**
  * @Title: ApiExecutor.java
@@ -61,4 +66,21 @@ public abstract class ApiExecutor<PlotType extends GenericAPIPlot, R extends Res
 		this.retryIfFail = retryIfFail;
 	}
 
+	/*
+	 * 注入令牌刷新的后续处理句柄
+	 * 要求，注入的方法必须是处理JSON.toJSON的令牌实体
+	 */
+	public void attachAfterAccessTokenRefreshHandler(Object object, String method) {
+		if (null != object && !GenericUtils.isBlank(method)) {
+			try {
+				Method handlerMethod = object.getClass().getDeclaredMethod(method, Object.class);
+				this.getApiPlot().getAfterAccessTokenRefreshHandler().setHandler(object);
+				this.getApiPlot().getAfterAccessTokenRefreshHandler().setMethod(handlerMethod);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+
+	}
 }

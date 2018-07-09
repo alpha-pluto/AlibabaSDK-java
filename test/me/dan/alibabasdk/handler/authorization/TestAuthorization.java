@@ -22,17 +22,17 @@ public class TestAuthorization {
 
 	@Test
 	public void testGetPreAuthUrl() throws Exception {
-		PreAuthAPIPlot plot = new PreAuthAPIPlot("******", "1688", "http://www.eastmall.vip/ali-pre-auth", "******");
+		PreAuthAPIPlot plot = new PreAuthAPIPlot("***", "1688", "http://www.eastmall.vip/ali-pre-auth", "***");
 		String url = plot.getAuthorizationUrl();
 		System.out.println(url);
 	}
 
 	@Test
 	public void testAccessTokenExecutor() throws Exception {
-		String clientId = "******";
-		String clientSecret = "******";
+		String clientId = "*****";
+		String clientSecret = "*****";
 		String redirectUrl = "http://www.eastmall.vip/ali-pre-auth";
-		String preAuthCode = "2c823974-63c8-4e5c-b3d5-09a6bacd5057";
+		String preAuthCode = "e1fad7da-f780-46cf-b051-e6cdb5ceb15b";
 		AccessTokenExecutor executor = new AccessTokenExecutor(clientId, clientSecret, redirectUrl, preAuthCode);
 		ResponseEntity<AuthorizationToken> result = executor.invoke();
 

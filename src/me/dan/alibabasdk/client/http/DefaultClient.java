@@ -142,7 +142,7 @@ public class DefaultClient extends AbstractClient {
 				}
 				out = conn.getOutputStream();
 				out.write(byteContent);
-				
+
 				int httpCode = conn.getResponseCode();
 				String contentEncoding = conn.getContentEncoding();
 				String contentType = conn.getContentType();
