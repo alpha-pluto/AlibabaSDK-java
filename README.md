@@ -118,3 +118,44 @@
 
 		System.out.println(result);
 	}
+	
+	
+演示令牌刷新后续处理句柄
+
+	@Test
+	public void testOrderOnSellerViewExecutorWithTokenRefreshHandler() throws Exception {
+
+		/*
+		 * 本测试使用内部类，实际工作时调用外部类的方法
+		 */
+		HandlerSimulator handlerSimulator = new HandlerSimulator();
+
+		AuthorizationToken token = new AuthorizationToken();
+		token.setAccess_token("****");
+		token.setAliId(123456789l);
+		token.setMemberId("b2b-123456");
+		token.setClientId("******");
+		token.setClientSecret("******");
+		token.setExpires_in(35999);
+		token.setRefresh_token("41227eb4-520e-48e0-a432-7d17c870bf6c");
+		token.setRefresh_token_timeout("20181113172954000+0800");
+		token.setResource_owner("zheming");
+
+		ParamsOfOrderDetailOnSellerView param = new ParamsOfOrderDetailOnSellerView();
+		param.setOrderId("159310337253103128");
+
+		// 如果失败，是否再试一次
+		boolean retryIfFail = true;
+
+		OrderDetailOnSellerViewExecutor executor = new OrderDetailOnSellerViewExecutor(token, param, retryIfFail);
+
+		/*
+		 * 注入令牌刷新的后续处理句柄
+		 * 要求，注入的方法必须是处理JSON.toJSON的令牌实体
+		 */
+		executor.attachAfterAccessTokenRefreshHandler(handlerSimulator, "notifyOfHandlerPurpose");
+
+		ResponseEntity<AlibabaTradeGetSellerViewResult> result = executor.invoke();
+
+		System.out.println(result);
+	}
