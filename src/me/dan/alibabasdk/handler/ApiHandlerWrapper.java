@@ -148,7 +148,6 @@ public class ApiHandlerWrapper<T extends GenericAPIPlot> implements MethodInterc
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return result;
 
 	}
