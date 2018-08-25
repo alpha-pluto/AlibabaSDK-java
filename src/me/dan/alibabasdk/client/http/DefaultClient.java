@@ -14,7 +14,6 @@ import java.util.Map;
 import me.dan.alibabasdk.entity.ObjectBox;
 import me.dan.alibabasdk.entity.ResponseEntity;
 import me.dan.alibabasdk.exception.AliSDKException;
-import me.dan.alibabasdk.infrastructure.APIPlot;
 import me.dan.alibabasdk.infrastructure.GenericAPIPlot;
 import me.dan.alibabasdk.serialize.DeSerializer;
 import me.dan.alibabasdk.serialize.SerializerProvider;

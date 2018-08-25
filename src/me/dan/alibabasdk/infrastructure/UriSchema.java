@@ -3,7 +3,7 @@ package me.dan.alibabasdk.infrastructure;
 /**
  * @Title: UriSchema.java
  * @Package me.dan.alibabasdk.infrastructure
- * @Description: TODO
+ * @Description: 访问外部资源的协议（方式）
  * @author daniel
  * @email daniel.zhang.china#hotmail.com
  * @date 2018-07-03 下午5:04:03
